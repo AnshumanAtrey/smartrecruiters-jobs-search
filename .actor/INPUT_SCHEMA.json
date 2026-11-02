@@ -8,7 +8,7 @@
             "title": "Job titles to find (searchTerms)",
             "type": "array",
             "editor": "stringList",
-            "description": "Type the job titles or keywords to find, one per line, for example software engineer. A job matches when its title has every word of a line: frontend also finds Front-End. Leave it empty to get the newest jobs of every kind. A pasted Google dork or SmartRecruiters link works too.",
+            "description": "Type the job titles or keywords to find, one per line, for example software engineer. A job matches when its title has every word of a line, with or without accents. SmartRecruiters' own search finds the words, so frontend and front end find different jobs: add both lines to get both. Leave it empty to get the newest jobs of every kind. A pasted Google dork or SmartRecruiters link works too.",
             "placeholderValue": "software engineer",
             "example": [
                 "software engineer"
@@ -159,7 +159,7 @@
             "title": "Job links to check (jobUrls)",
             "type": "array",
             "editor": "stringList",
-            "description": "Paste SmartRecruiters job links to check whether they are still open, one per line, instead of searching. Each link comes back open with the job, closed, or not found. Links on jobs., careers. and www.smartrecruiters.com and API links work too, with or without the title part.",
+            "description": "Paste SmartRecruiters job links to check whether they are still open, one per line, instead of searching. Each link comes back open with the job, closed, or not found. Links on jobs., careers. and www.smartrecruiters.com, API links and smrtr.io short links work too, with or without the title part.",
             "placeholderValue": "https://jobs.smartrecruiters.com/ServiceNow/744000159234126-senior-staff-software-engineer-javascript-runtime-compilers",
             "example": [
                 "https://jobs.smartrecruiters.com/ServiceNow/744000159234126-senior-staff-software-engineer-javascript-runtime-compilers"

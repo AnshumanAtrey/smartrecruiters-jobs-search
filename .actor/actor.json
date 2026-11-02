@@ -14,7 +14,7 @@
     "output": "./output_schema.json",
     "dockerfile": "../Dockerfile",
     "readme": "../README.md",
-    "minMemoryMbytes": 512,
+    "minMemoryMbytes": 1024,
     "maxMemoryMbytes": 4096,
     "storages": {
         "dataset": {
@@ -173,7 +173,7 @@
                             "string",
                             "null"
                         ],
-                        "title": "Reference number (reference)",
+                        "title": "Company's reference (reference)",
                         "description": "With details on: the company's own reference for the job (SmartRecruiters' refNumber).",
                         "example": "226947"
                     },
@@ -369,7 +369,7 @@
                                 "format": "text"
                             },
                             "reference": {
-                                "label": "Reference number (reference)",
+                                "label": "Company's reference (reference)",
                                 "format": "text"
                             },
                             "city": {

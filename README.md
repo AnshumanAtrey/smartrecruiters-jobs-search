@@ -59,13 +59,13 @@ Every actor on the Apify Store whose listing says it reads SmartRecruiters jobs 
 |---|---|---|---|---|
 | fantastic-jobs/career-site-job-listing-api | 1,632 | $0.012 | $0.01 | 58 ATS from its own database; `smartrecruiters` is one filter |
 | fantastic-jobs/career-site-job-listing-feed | 282 | $0.0025 | $0.10 | The same database as a feed |
-| hirebase/job-search | 138 | $0.005 | $0.001 | 80+ ATS from its own index; SmartRecruiters is one platform filter |
+| hirebase/job-search | 137 | $0.005 | $0.001 | 80+ ATS from its own index; SmartRecruiters is one platform filter |
 | jobo.world/ats-jobs-api | 134 | $0.004 | $0.00005 | 150+ platforms from its own index; SmartRecruiters is one source |
 | bovi/greenhouse-lever-ashby-job-scraper | 100 | $0.0015 | $0.00005 | 6 ATS, the companies you name or 4 preset lists |
 | memo23/career-site-ats-jobs-api | 81 | $0.004 | $0.03 | 116 ATS, the companies you name |
 | jobspipe/jobspipe-job-search | 61 | $0.00196 | none | Its own index of job boards and 12 ATS; `smartrecruiters` is one source |
-| openclawai/career-site-ats-jobs-scraper | 47 | $0.0005 | none | 30+ ATS, the careers page or company name you give it |
-| santamaria-automations/career-site-jobs-scraper | 23 | $0.001 | $0.001 | 42 ATS, the career-site links you give it |
+| openclawai/career-site-ats-jobs-scraper | 47 | $0.0005 | none | 60+ ATS by its listing (34 named), the careers page or company name you give it |
+| santamaria-automations/career-site-jobs-scraper | 23 | $0.001 | $0.001 | 42 ATS and job sites, the career-site links you give it |
 | lergassy/jobs-api | 20 | $0.006 | none | Indeed, LinkedIn and 5 ATS; the SmartRecruiters boards you name. $0.0001 from 2026-11-13 |
 | blackfalcondata/greenhouse-scraper | 6 | $0.00095 | $0.005 | 6 ATS, the board links you give it |
 | pulsedata/career-page-jobs-scraper | 5 | $0.002 | none | 12 ATS, the board or careers-page links you give it |
@@ -73,7 +73,7 @@ Every actor on the Apify Store whose listing says it reads SmartRecruiters jobs 
 | memo23/smartrecruiters-scraper | 3 | $0.0009 | $0.025 | SmartRecruiters only, the company IDs you give it |
 | This actor | new | $0.0025 | none | SmartRecruiters only, 2,943 career sites read live, no IDs needed |
 
-Per job is each actor's main event; some charge more for extra data. Where others are cheaper: bovi, openclawai, santamaria-automations, blackfalcondata, pulsedata and memo23's SmartRecruiters actor cost less per job when you already know the companies, and jobspipe costs less per job across its sources. Where others do more: the multi-ATS actors cover many platforms in one run. The other 119 actors with SmartRecruiters in their name or title had 2 users or fewer each.
+Per job is each actor's main event; some charge more for extra data. Where others are cheaper: bovi, openclawai, santamaria-automations, blackfalcondata, pulsedata and memo23's SmartRecruiters actor cost less per job when you already know the companies, and jobspipe costs less per job across its sources. Where others do more: the multi-ATS actors cover many platforms in one run. The other 120 actors with SmartRecruiters in their name or title had 2 users or fewer each.
 
 Left out although their listings name SmartRecruiters: factpipe/ats-jobs-feed (98 users), glitchbound/ats-jobs-scraper (63), jtpalms/ats-jobs-index (60) and conserving_celerytop/live-career-page-jobs-api (55) say they do not read it, and kaix/linkedin-jobs-scraper (174) reads it only to enrich jobs found on LinkedIn.
 
@@ -83,7 +83,7 @@ Nothing is required. Type a job title and press Start, or press Start with the f
 
 | Field | What it does |
 |---|---|
-| Job titles to find (`searchTerms`) | One per line. A job matches when its title has every word: frontend also finds Front-End. A pasted Google dork or SmartRecruiters link works too |
+| Job titles to find (`searchTerms`) | One per line. A job matches when its title has every word, with or without accents. SmartRecruiters' own search finds the words, so frontend and front end find different jobs: add both lines to get both. A pasted Google dork or SmartRecruiters link works too |
 | Where the job is (`location`) | A city, state, country or region: London, United States, Germany, EMEA. Remote asks for remote jobs |
 | Remote or onsite (`workType`) | remote, hybrid or onsite: remote and hybrid as the company flagged them, every other job onsite |
 | Posted in the last (`postedWithin`) | 24 hours, 3 days, 7 days, 30 days, any time, or your own period such as 48 hours |
@@ -93,7 +93,7 @@ Nothing is required. Type a job title and press Start, or press Start with the f
 | Job type (`employmentType`) | full-time, part-time, contract or intern, the four job types SmartRecruiters jobs carry |
 | Match descriptions (`searchDescriptions`) | Finds your words in the description too, not only the title |
 | Only these companies (`companies`) | A name (Bosch Group), the company ID (BoschGroup) or a SmartRecruiters link. Empty searches every company on the list |
-| Job links to check (`jobUrls`) | Paste job links to check whether they are still open, instead of searching |
+| Job links to check (`jobUrls`) | Paste job links, smrtr.io short links included, to check whether they are still open, instead of searching |
 
 Example input:
 
@@ -219,7 +219,7 @@ Built and maintained by **Anshuman Atrey** ([@AnshumanAtrey](https://github.com/
 | [deel-jobs-search](https://apify.com/anshumanatrey/deel-jobs-search) | Every job on every Deel ATS career page, with pay |
 | [greenhouse-jobs-search](https://apify.com/anshumanatrey/greenhouse-jobs-search) | Jobs on Greenhouse job boards, searched live |
 | [lever-jobs-search](https://apify.com/anshumanatrey/lever-jobs-search) | Jobs on Lever job sites, searched live |
-| [workable-jobs-search](https://apify.com/anshumanatrey/workable-jobs-search) | Jobs on Workable job boards, searched live |
+| [workable-job-search](https://apify.com/anshumanatrey/workable-job-search) | Jobs on Workable job boards, searched live |
 | [linkedin-harvester](https://apify.com/anshumanatrey/linkedin-harvester) | Email to LinkedIn profile, for the people behind a company |
 
 ## Documentation

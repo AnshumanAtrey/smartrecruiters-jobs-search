@@ -22,7 +22,7 @@ Source: https://github.com/AnshumanAtrey/smartrecruiters-jobs-search
 
 ## Input keys
 
-- Job titles to find (searchTerms): one per line; a job matches when its title has every word.
+- Job titles to find (searchTerms): one per line; a job matches when its title has every word, with or without accents. SmartRecruiters' own search finds the words, so frontend and front end find different jobs.
 - Where the job is (location): city, state, country or region.
 - Remote or onsite (workType): remote, hybrid or onsite; remote and hybrid as the company flagged them.
 - Posted in the last (postedWithin): 24 hours, 3 days, 7 days, 30 days, any time, or your own period.
@@ -32,7 +32,7 @@ Source: https://github.com/AnshumanAtrey/smartrecruiters-jobs-search
 - Job type (employmentType): full-time, part-time, contract or intern.
 - Match descriptions (searchDescriptions): finds your words in the description too.
 - Only these companies (companies): a name, the company ID in any capitals, or a SmartRecruiters link.
-- Job links to check (jobUrls): checks links instead of searching.
+- Job links to check (jobUrls): checks links, smrtr.io short links included, instead of searching.
 
 ## Pricing
 
@@ -59,7 +59,7 @@ Typical costs (Free and Starter price):
 ## When NOT to use
 
 - The user needs pay on every row: SmartRecruiters' job list has none, and with full details 16% of a sample had it.
-- The user needs jobs from a company that is not on SmartRecruiters, or many platforms in one run: use a multi-ATS actor, or workday-job-search, greenhouse-jobs-search, lever-jobs-search, workable-jobs-search or ashby-jobs-search.
+- The user needs jobs from a company that is not on SmartRecruiters, or many platforms in one run: use a multi-ATS actor, or workday-job-search, greenhouse-jobs-search, lever-jobs-search, workable-job-search, cornerstone-jobs-search, deel-jobs-search or ashby-jobs-search.
 - The user needs a job's closing date: SmartRecruiters' API gives none.
 
 ## Sample input
