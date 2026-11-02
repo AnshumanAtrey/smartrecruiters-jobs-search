@@ -1,0 +1,172 @@
+{
+    "title": "SmartRecruiters Jobs Search",
+    "description": "Type a job title and press Start: you get the newest matching jobs from 2,900+ companies on SmartRecruiters (226,000+ open jobs). Every other field is optional. Press Start with the form empty for the newest jobs of every kind.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "searchTerms": {
+            "title": "Job titles to find (searchTerms)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Type the job titles or keywords to find, one per line, for example software engineer. A job matches when its title has every word of a line: frontend also finds Front-End. Leave it empty to get the newest jobs of every kind. A pasted Google dork or SmartRecruiters link works too.",
+            "placeholderValue": "software engineer",
+            "example": [
+                "software engineer"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "location": {
+            "title": "Where the job is (location)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Type where the jobs should be: a city, state, country or region, one per line, for example London, United States, Germany or EMEA. US, USA and United States all work, a region finds the jobs in its countries, and an office a company filed under a continent counts where it is. Type Remote here to get remote jobs. Leave it empty for anywhere.",
+            "placeholderValue": "United States",
+            "example": [
+                "United States"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "workType": {
+            "title": "Remote or onsite (workType)",
+            "type": "array",
+            "editor": "select",
+            "description": "Pick remote, hybrid or onsite, or several. Leave it empty for all of them. Remote and hybrid are what the company flagged on SmartRecruiters, and every other job is onsite, as SmartRecruiters counts it. Typed words such as wfh work too.",
+            "items": {
+                "type": "string",
+                "enumSuggestedValues": [
+                    "remote",
+                    "hybrid",
+                    "onsite"
+                ],
+                "enumTitles": [
+                    "Remote",
+                    "Hybrid",
+                    "Onsite, in the office (onsite)"
+                ]
+            },
+            "example": [
+                "remote"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "postedWithin": {
+            "title": "Posted in the last (postedWithin)",
+            "type": "string",
+            "editor": "select",
+            "description": "Pick how new the jobs must be: posted in the last 24 hours, 3 days, 7 days or 30 days. Any time, the default, keeps every open job, newest first. SmartRecruiters dates each job to the millisecond, so 24 hours means 24 hours. You can also type your own period, such as 48 hours or 2 weeks.",
+            "enumSuggestedValues": [
+                "24 hours",
+                "3 days",
+                "7 days",
+                "30 days",
+                "any time"
+            ],
+            "enumTitles": [
+                "24 hours",
+                "3 days",
+                "7 days",
+                "30 days",
+                "any time"
+            ],
+            "example": "24 hours",
+            "default": "any time",
+            "nullable": true
+        },
+        "maxJobs": {
+            "title": "Number of jobs (maxJobs)",
+            "type": "integer",
+            "editor": "number",
+            "unit": "jobs",
+            "description": "Type how many jobs to get, newest first: 100 by default. Type 0 to get every matching job. Each job is one charged row, so this also sets the most a run can cost.",
+            "prefill": 100,
+            "example": 100,
+            "default": 100,
+            "sectionCaption": "How many and how much",
+            "nullable": true
+        },
+        "includeDetails": {
+            "title": "Full details (includeDetails)",
+            "type": "boolean",
+            "editor": "checkbox",
+            "description": "Tick to add the full details of each job: the description as text and HTML, the pay with its period when the company publishes it (about 1 job in 6), the reference number, and the city, region, country and country code. A job with details costs $3.50 per 1,000 instead of $2.50.",
+            "default": false,
+            "nullable": true
+        },
+        "excludeTerms": {
+            "title": "Leave out words (excludeTerms)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Type words that leave a job out when its title has them, one per line, for example senior or manager. Leave it empty to keep every job.",
+            "placeholderValue": "senior",
+            "example": [
+                "senior"
+            ],
+            "default": [],
+            "sectionCaption": "Narrow the search",
+            "nullable": true
+        },
+        "employmentType": {
+            "title": "Job type (employmentType)",
+            "type": "array",
+            "editor": "select",
+            "description": "Pick the job type: full-time, part-time, contract or internship, or several. Leave it empty for every job type. These are the four job types SmartRecruiters jobs carry (its Permanent is full-time); about 1% of jobs state none and this filter leaves them out. Typed words such as freelance work too.",
+            "items": {
+                "type": "string",
+                "enumSuggestedValues": [
+                    "full-time",
+                    "part-time",
+                    "contract",
+                    "intern"
+                ],
+                "enumTitles": [
+                    "Full-time",
+                    "Part-time",
+                    "Contract or freelance (contract)",
+                    "Internship (intern)"
+                ]
+            },
+            "example": [
+                "full-time"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "searchDescriptions": {
+            "title": "Match descriptions (searchDescriptions)",
+            "type": "boolean",
+            "editor": "checkbox",
+            "description": "Tick to match your keywords in the job description too, not only in the title: kubernetes then also finds jobs that ask for Kubernetes in the text. A line of several words must appear in the description as a phrase. SmartRecruiters runs this search itself, so it needs no full details and costs nothing extra.",
+            "default": false,
+            "nullable": true
+        },
+        "companies": {
+            "title": "Only these companies (companies)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Type company names to search only them, one per line: a name (Bosch Group), the company ID in the address (BoschGroup, in any capitals) or a SmartRecruiters link (careers.smartrecruiters.com/BoschGroup). A company that is not on our list is tried by its name or link, and one that posted nothing in two years is read when named. Leave it empty to search every company on the list.",
+            "placeholderValue": "Bosch Group",
+            "example": [
+                "Bosch Group",
+                "https://careers.smartrecruiters.com/ServiceNow"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "jobUrls": {
+            "title": "Job links to check (jobUrls)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Paste SmartRecruiters job links to check whether they are still open, one per line, instead of searching. Each link comes back open with the job, closed, or not found. Links on jobs., careers. and www.smartrecruiters.com and API links work too, with or without the title part.",
+            "placeholderValue": "https://jobs.smartrecruiters.com/ServiceNow/744000159234126-senior-staff-software-engineer-javascript-runtime-compilers",
+            "example": [
+                "https://jobs.smartrecruiters.com/ServiceNow/744000159234126-senior-staff-software-engineer-javascript-runtime-compilers"
+            ],
+            "default": [],
+            "sectionCaption": "Check job links",
+            "nullable": true
+        }
+    }
+}

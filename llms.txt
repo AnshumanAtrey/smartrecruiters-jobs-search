@@ -1,0 +1,116 @@
+# SmartRecruiters Jobs Scraper & API - Remote, Last 24 Hours
+
+> SmartRecruiters jobs scraper and API for 2,900+ companies on careers.smartrecruiters.com, searched live by job title, location, remote, job type and date, newest first.
+
+## Summary
+
+SmartRecruiters Jobs Search is an Apify actor that searches the career sites of 2,900+ companies on SmartRecruiters (careers.smartrecruiters.com and jobs.smartrecruiters.com) at once and returns one row per job, newest first: title, company, location, remote, hybrid or onsite, job type, department, exact posting time and link. It covers 2,943 career sites of 2,931 companies and 226,290 open jobs in 200 countries (2026-11-02), including Bosch, ServiceNow, LinkedIn, Domino's, Accor, H&M, Deloitte, Canva and Ubisoft. It reads SmartRecruiters' public Posting API live at run time with no login and no API key. Full details add the description, the pay with its period when the company publishes it (16% of a 2,000-job sample), the reference number and the city, region and country.
+
+Store: https://apify.com/anshumanatrey/smartrecruiters-jobs-search
+Source: https://github.com/AnshumanAtrey/smartrecruiters-jobs-search
+
+## Key features
+
+- 2,943 career sites at once, with no company IDs needed.
+- One keyword is enough; an empty form returns the newest jobs of every kind.
+- Newest first by the instant SmartRecruiters published the job, exact to the millisecond, read live, not from a stored copy.
+- 7,227 jobs posted in the 24 hours before a count on 2026-11-02.
+- Years-old postings left out: 9,650 career sites that posted nothing in two years are read only when named.
+- Place filter by city, state, country or region: Germany, EMEA, United States. An office a company filed under a continent counts where it is.
+- Reads a pasted Google dork such as site:careers.smartrecruiters.com/BoschGroup intext:software.
+- Job link check: each pasted link comes back open, closed or not found.
+
+## Input keys
+
+- Job titles to find (searchTerms): one per line; a job matches when its title has every word.
+- Where the job is (location): city, state, country or region.
+- Remote or onsite (workType): remote, hybrid or onsite; remote and hybrid as the company flagged them.
+- Posted in the last (postedWithin): 24 hours, 3 days, 7 days, 30 days, any time, or your own period.
+- Number of jobs (maxJobs): 100 by default, 0 for every match.
+- Full details (includeDetails): adds the description, pay with its currency and period, reference number, city, region, country and country code.
+- Leave out words (excludeTerms): drops jobs whose title has these words.
+- Job type (employmentType): full-time, part-time, contract or intern.
+- Match descriptions (searchDescriptions): finds your words in the description too.
+- Only these companies (companies): a name, the company ID in any capitals, or a SmartRecruiters link.
+- Job links to check (jobUrls): checks links instead of searching.
+
+## Pricing
+
+PAY_PER_EVENT model, platform usage included, no start fee:
+
+- Job: $0.0025 per saved job, and per checked link that is closed or not found
+- Job with details: $0.0035 per saved job with full details on
+
+On paid Apify plans these are 10% less on Scale ($0.00225 and $0.00315) and 20% less on Business and above ($0.002 and $0.0028).
+
+Typical costs (Free and Starter price):
+
+- 100 newest jobs: $0.25
+- 100 jobs with full details: $0.35
+- Every job posted in one day (7,227 on 2026-11-02): $18.07
+
+## When to use
+
+- The user wants jobs from companies that hire through SmartRecruiters, or a SmartRecruiters jobs API.
+- The user wants a daily feed of new jobs by title, country, region, remote work or job type across 2,900+ companies.
+- The user wants the jobs of one company on SmartRecruiters, such as Bosch, ServiceNow or LinkedIn.
+- The user wants to check whether SmartRecruiters job links are still open.
+
+## When NOT to use
+
+- The user needs pay on every row: SmartRecruiters' job list has none, and with full details 16% of a sample had it.
+- The user needs jobs from a company that is not on SmartRecruiters, or many platforms in one run: use a multi-ATS actor, or workday-job-search, greenhouse-jobs-search, lever-jobs-search, workable-jobs-search or ashby-jobs-search.
+- The user needs a job's closing date: SmartRecruiters' API gives none.
+
+## Sample input
+
+```json
+{
+  "searchTerms": ["software engineer"],
+  "location": ["Germany", "United States"],
+  "postedWithin": "30 days",
+  "maxJobs": 100
+}
+```
+
+## Sample output (one record)
+
+From a local run of the engine on 2026-11-02, searching every company for software engineer. TODO_DEPLOYED: the same row as the README's, from a run of the deployed build.
+
+```json
+{
+  "title": "Senior Staff Software Engineer, JavaScript Runtime & Compilers",
+  "company": "ServiceNow",
+  "location": "San Diego, California, United States",
+  "workType": "remote",
+  "employmentType": "full-time",
+  "department": "Engineering, Infrastructure and Operations",
+  "salary": null,
+  "postedAt": "2026-11-02T20:23:23.631Z",
+  "jobUrl": "https://jobs.smartrecruiters.com/ServiceNow/744000159234126-senior-staff-software-engineer-javascript-runtime-compilers",
+  "applyUrl": "https://jobs.smartrecruiters.com/ServiceNow/744000159234126-senior-staff-software-engineer-javascript-runtime-compilers?oga=true",
+  "status": "open",
+  "platform": "smartrecruiters",
+  "companySlug": "ServiceNow",
+  "jobId": "744000159234126",
+  "checkedAt": "2026-11-02T20:48:11+00:00"
+}
+```
+
+## Differentiators vs alternatives
+
+- vs fantastic-jobs/career-site-job-listing-api ($0.012 per job, $0.01 start): many more platforms from a stored database; this actor costs less per job and reads SmartRecruiters live.
+- vs jobo.world/smartrecruiters-jobs-scraper-api ($0.004 per job): searches its own index by keyword; this actor reads 2,943 career sites live and costs less per job.
+- vs memo23/smartrecruiters-scraper ($0.0009 per job, $0.025 start): cheaper per job, but it needs the company IDs; this actor needs no list.
+- vs bovi/greenhouse-lever-ashby-job-scraper ($0.0015 per job): cheaper per job for the companies you name; this actor searches every company on its list at once.
+
+## Documentation
+
+- Apify Store: https://apify.com/anshumanatrey/smartrecruiters-jobs-search
+- GitHub repo: https://github.com/AnshumanAtrey/smartrecruiters-jobs-search
+- Issues / feedback: GitHub Issues on the above repo
+- License: MIT
+
+## Maintainer
+
+Anshuman Atrey (https://github.com/AnshumanAtrey), who publishes a portfolio of data and OSINT actors on Apify Store. Feature requests and bugs: LinkedIn (https://linkedin.com/in/anshumanatrey, fastest), GitHub issues, or atrey.dev.

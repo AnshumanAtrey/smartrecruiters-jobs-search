@@ -1,0 +1,421 @@
+{
+    "actorSpecification": 1,
+    "name": "smartrecruiters-jobs-search",
+    "title": "SmartRecruiters Jobs Scraper & API - Remote, Last 24 Hours",
+    "description": "SmartRecruiters jobs scraper and API for 2,900+ companies on careers.smartrecruiters.com, searched live by job title, location, remote, job type and date, newest first. 226,000+ open jobs, no company IDs needed. The site:careers.smartrecruiters.com dork at the source: descriptions, pay, link checks.",
+    "version": "1.0",
+    "buildTag": "latest",
+    "categories": [
+        "JOBS",
+        "LEAD_GENERATION",
+        "OPEN_SOURCE"
+    ],
+    "input": "./INPUT_SCHEMA.json",
+    "output": "./output_schema.json",
+    "dockerfile": "../Dockerfile",
+    "readme": "../README.md",
+    "minMemoryMbytes": 512,
+    "maxMemoryMbytes": 4096,
+    "storages": {
+        "dataset": {
+            "actorSpecification": 1,
+            "title": "SmartRecruiters jobs",
+            "description": "One row per job, newest first: title, company, location, work type, job type, department, posting date and links; with details on, also the description, pay with its period, reference number and the city, region and country. The run summary is the OUTPUT record, not a row.",
+            "fields": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job title (title)",
+                        "description": "The job title as the company wrote it on SmartRecruiters.",
+                        "example": "Senior Staff Software Engineer, JavaScript Runtime & Compilers"
+                    },
+                    "company": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Company name (company)",
+                        "description": "The company as SmartRecruiters names it on the posting. It can differ from the ID in its links: LinkedIn for LinkedIn3.",
+                        "example": "ServiceNow"
+                    },
+                    "location": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job location (location)",
+                        "description": "The job's one place: city, state or region, and country, as SmartRecruiters stores it. A continent a company typed as the region of an office is left out.",
+                        "example": "San Diego, California, United States"
+                    },
+                    "workType": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Remote or onsite (workType)",
+                        "description": "remote or hybrid when the company flagged the job so on SmartRecruiters, else onsite, SmartRecruiters' own third choice.",
+                        "example": "remote"
+                    },
+                    "employmentType": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job type (employmentType)",
+                        "description": "full-time (SmartRecruiters' Permanent), part-time, contract or intern. Empty when the company set none, about 1% of jobs.",
+                        "example": "full-time"
+                    },
+                    "department": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Hiring department (department)",
+                        "description": "The department the company filed the job under, on about 43% of jobs.",
+                        "example": "Engineering, Infrastructure and Operations"
+                    },
+                    "salary": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Pay summary (salary)",
+                        "description": "With details on: the pay the company publishes, with its currency and period; a maximum stated alone reads \"up to\". Empty without details, and when the company shows no pay (about 5 jobs in 6).",
+                        "example": "USD 37 - 60.98 an hour"
+                    },
+                    "postedAt": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Posted on (postedAt)",
+                        "description": "When the job was published, exact to the millisecond, in UTC: the same instant as datePosted on the job's own page.",
+                        "example": "2026-11-02T20:23:23.631Z"
+                    },
+                    "jobUrl": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job link (jobUrl)",
+                        "description": "The job's page on jobs.smartrecruiters.com.",
+                        "example": "https://jobs.smartrecruiters.com/ServiceNow/744000159234126-senior-staff-software-engineer-javascript-runtime-compilers"
+                    },
+                    "applyUrl": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Apply link (applyUrl)",
+                        "description": "The link to apply for the job on SmartRecruiters.",
+                        "example": "https://jobs.smartrecruiters.com/ServiceNow/744000159234126-senior-staff-software-engineer-javascript-runtime-compilers?oga=true"
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Still open? (status)",
+                        "description": "open for every search result (read live during the run). For a checked link: open, closed (SmartRecruiters marks the posting inactive) or not found (no such job, or a company whose career site cannot be read).",
+                        "example": "open"
+                    },
+                    "platform": {
+                        "type": "string",
+                        "title": "Job platform (platform)",
+                        "description": "The ATS the job came from: always smartrecruiters here.",
+                        "example": "smartrecruiters"
+                    },
+                    "companySlug": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Company ID (companySlug)",
+                        "description": "The company's ID in its SmartRecruiters links, as BoschGroup in careers.smartrecruiters.com/BoschGroup. It is read in any capitals.",
+                        "example": "ServiceNow"
+                    },
+                    "jobId": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job ID (jobId)",
+                        "description": "SmartRecruiters' ID of the job posting.",
+                        "example": "744000159234126"
+                    },
+                    "checkedAt": {
+                        "type": "string",
+                        "title": "Checked at (checkedAt)",
+                        "description": "When the run read the career sites, in UTC.",
+                        "example": "2026-11-02T20:48:11+00:00"
+                    },
+                    "description": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job description (description)",
+                        "description": "With details on: the job ad as plain text, its parts (company, job, qualifications, additional information) under their own headings.",
+                        "example": "Company Description\nAt Northwestern Medicine, every patient interaction makes a difference in cultivating a positive workplace. This patient-first ..."
+                    },
+                    "descriptionHtml": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Description as HTML (descriptionHtml)",
+                        "description": "With details on: the job ad in HTML as the company wrote it, each part under an h3 heading.",
+                        "example": "<h3>Company Description</h3><p>At Northwestern Medicine, every patient interaction makes a difference in cultivating a positive workplace. This ..."
+                    },
+                    "reference": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Reference number (reference)",
+                        "description": "With details on: the company's own reference for the job (SmartRecruiters' refNumber).",
+                        "example": "226947"
+                    },
+                    "salaryMin": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Lowest pay (salaryMin)",
+                        "description": "With details on: the lowest pay as a number. Empty when the company shows no pay, or only a maximum.",
+                        "example": 37
+                    },
+                    "salaryMax": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Highest pay (salaryMax)",
+                        "description": "With details on: the highest pay as a number.",
+                        "example": 60.98
+                    },
+                    "salaryCurrency": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Pay currency (salaryCurrency)",
+                        "description": "With details on: the currency code of the pay.",
+                        "example": "USD"
+                    },
+                    "salaryPeriod": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Pay period (salaryPeriod)",
+                        "description": "With details on: what the pay is per, as the company states it: year, month, week, day or hour. Empty when it states none; never guessed.",
+                        "example": "hour"
+                    },
+                    "city": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job city (city)",
+                        "description": "With details on: the city of the job.",
+                        "example": "Winfield"
+                    },
+                    "region": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "State or region (region)",
+                        "description": "With details on: the state, province or region of the job, as SmartRecruiters stores it; a continent typed there is left out.",
+                        "example": "IL"
+                    },
+                    "country": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job country (country)",
+                        "description": "With details on: the country of the job.",
+                        "example": "United States"
+                    },
+                    "countryCode": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Country code (countryCode)",
+                        "description": "With details on: the two-letter country code.",
+                        "example": "US"
+                    }
+                }
+            },
+            "views": {
+                "jobs": {
+                    "title": "Jobs",
+                    "description": "One row per job: what it is, where, remote or not, the job type and when it was posted, with its link.",
+                    "transformation": {
+                        "fields": [
+                            "title",
+                            "company",
+                            "location",
+                            "workType",
+                            "employmentType",
+                            "postedAt",
+                            "jobUrl",
+                            "status"
+                        ]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "title": {
+                                "label": "Job title (title)",
+                                "format": "text"
+                            },
+                            "company": {
+                                "label": "Company name (company)",
+                                "format": "text"
+                            },
+                            "location": {
+                                "label": "Job location (location)",
+                                "format": "text"
+                            },
+                            "workType": {
+                                "label": "Remote or onsite (workType)",
+                                "format": "text"
+                            },
+                            "employmentType": {
+                                "label": "Job type (employmentType)",
+                                "format": "text"
+                            },
+                            "postedAt": {
+                                "label": "Posted on (postedAt)",
+                                "format": "date"
+                            },
+                            "jobUrl": {
+                                "label": "Job link (jobUrl)",
+                                "format": "link"
+                            },
+                            "status": {
+                                "label": "Still open? (status)",
+                                "format": "text"
+                            }
+                        }
+                    }
+                },
+                "details": {
+                    "title": "Details",
+                    "description": "The description, pay with its period, department, reference, place and every other field of each job.",
+                    "transformation": {
+                        "fields": [
+                            "title",
+                            "company",
+                            "description",
+                            "salary",
+                            "salaryMin",
+                            "salaryMax",
+                            "salaryCurrency",
+                            "salaryPeriod",
+                            "department",
+                            "reference",
+                            "city",
+                            "region",
+                            "countryCode",
+                            "applyUrl",
+                            "companySlug",
+                            "jobId",
+                            "checkedAt"
+                        ]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "title": {
+                                "label": "Job title (title)",
+                                "format": "text"
+                            },
+                            "company": {
+                                "label": "Company name (company)",
+                                "format": "text"
+                            },
+                            "description": {
+                                "label": "Job description (description)",
+                                "format": "text"
+                            },
+                            "salary": {
+                                "label": "Pay summary (salary)",
+                                "format": "text"
+                            },
+                            "salaryMin": {
+                                "label": "Lowest pay (salaryMin)",
+                                "format": "number"
+                            },
+                            "salaryMax": {
+                                "label": "Highest pay (salaryMax)",
+                                "format": "number"
+                            },
+                            "salaryCurrency": {
+                                "label": "Pay currency (salaryCurrency)",
+                                "format": "text"
+                            },
+                            "salaryPeriod": {
+                                "label": "Pay period (salaryPeriod)",
+                                "format": "text"
+                            },
+                            "department": {
+                                "label": "Hiring department (department)",
+                                "format": "text"
+                            },
+                            "reference": {
+                                "label": "Reference number (reference)",
+                                "format": "text"
+                            },
+                            "city": {
+                                "label": "Job city (city)",
+                                "format": "text"
+                            },
+                            "region": {
+                                "label": "State or region (region)",
+                                "format": "text"
+                            },
+                            "countryCode": {
+                                "label": "Country code (countryCode)",
+                                "format": "text"
+                            },
+                            "applyUrl": {
+                                "label": "Apply link (applyUrl)",
+                                "format": "link"
+                            },
+                            "companySlug": {
+                                "label": "Company ID (companySlug)",
+                                "format": "text"
+                            },
+                            "jobId": {
+                                "label": "Job ID (jobId)",
+                                "format": "text"
+                            },
+                            "checkedAt": {
+                                "label": "Checked at (checkedAt)",
+                                "format": "date"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "keyValueStore": {
+            "actorKeyValueStoreSchemaVersion": 1,
+            "title": "Run summary",
+            "description": "The OUTPUT record: how many career sites were read and matched, how many jobs were saved, the matching jobs counted while reading, the checked links, the notes about how the input was read and the settings used.",
+            "collections": {
+                "summary": {
+                    "title": "Run summary (OUTPUT)",
+                    "description": "Status, message, counts for the career sites and jobs, checked links, notes and settings.",
+                    "key": "OUTPUT"
+                }
+            }
+        }
+    }
+}
