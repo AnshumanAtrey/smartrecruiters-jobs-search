@@ -34,14 +34,14 @@ Use it as a SmartRecruiters jobs API, a careers.smartrecruiters.com scraper or a
 
 ## How much does it cost to scrape SmartRecruiters jobs?
 
-Pay per event. Platform usage is included, and there is no start fee or monthly fee.
+Pay per event: $2.50 per 1,000 jobs, or $3.50 per 1,000 with full details. Apify's free $5 monthly credit covers 2,000 jobs, or about 1,400 with full details. Platform usage is included, and there is no start fee or monthly fee.
 
 | Event | Price | When it is charged |
 |---|---|---|
 | Job | $0.0025 | One saved job, and one checked link that is closed or not found |
 | Job with details | $0.0035 | One saved job with full details on |
 
-On paid Apify plans these are 10% less on Scale ($0.00225 and $0.00315) and 20% less on Business and above ($0.002 and $0.0028).
+On paid Apify plans these are 10% less on Scale ($0.00225 and $0.00315) and 20% less on Business and above ($0.002 and $0.0028). The Store page shows that Business price, from $2.00 per 1,000 jobs.
 
 | Job (Free and Starter price) | Cost |
 |---|---|
@@ -50,7 +50,7 @@ On paid Apify plans these are 10% less on Scale ($0.00225 and $0.00315) and 20% 
 | 1,000 jobs | $2.50 |
 | Every job posted in one day (8,406 on 2026-11-03) | $21.02 |
 
-Apify's free $5 monthly credit covers 2,000 jobs, or about 1,400 with full details. Number of jobs (`maxJobs`) sets the most a run can cost, and a run stops at its spending limit with a message saying so.
+Number of jobs (`maxJobs`) sets the most a run can cost, and a run stops at its spending limit with a message saying so.
 
 ## How does the price compare with other SmartRecruiters scrapers?
 
@@ -171,9 +171,36 @@ What the company flagged on SmartRecruiters: 4.8% of jobs are remote and 13.7% h
 
 No. It reads SmartRecruiters' public Posting API, the one SmartRecruiters offers its customers for building their own career sites, and public jobs need no key there. You need only an Apify account.
 
-### How do I run it from Python or an AI agent?
+### Does it work on Apify's free plan?
 
-Through the Apify API, with your Apify token:
+Yes. Apify's free $5 monthly credit pays for 2,000 jobs, or about 1,400 with full details. There is no start fee, so a small run costs only its rows.
+
+### How often should I run it?
+
+Once a day keeps a feed fresh: set Posted in the last (`postedWithin`) to 24 hours and Number of jobs (`maxJobs`) to 0 to get every job posted that day, 8,406 in the 24 hours before a count on 2026-11-03 ($21.02), or add a job title or place to narrow it. Set the run up under Schedules in Apify Console, and match rows on `jobId` to skip jobs you already have.
+
+### How do I get every job of one company?
+
+Type its name in Only these companies (`companies`), such as Bosch Group, its company ID (BoschGroup, in any capitals) or its SmartRecruiters link, and set Number of jobs (`maxJobs`) to 0 for every open job. Only its career sites are read: Bosch Group took 5 requests. A company that posted nothing in two years is read too when you name it.
+
+### How do I check a list of job links?
+
+Paste the links into Job links to check (`jobUrls`), one per line, instead of searching. Links on jobs., careers. and www.smartrecruiters.com, API links and smrtr.io short links all work, with or without the title part. Each link comes back as one row, open with the job's fields, or closed or not found with its link, so 10 links come to $0.025.
+
+### How do I call it from the API, Python, JavaScript, n8n or an AI agent?
+
+Each way uses your Apify token (Apify Console, Settings, API & Integrations) and takes the input as JSON, with the field names above.
+
+**API.** One call runs the actor and returns its rows. Apify stops that wait after 300 seconds: a search of every career site takes about 40 seconds, well inside it, but for a bigger run, such as every job (`maxJobs` 0), use a client below, which waits until the run ends.
+
+```bash
+curl -X POST "https://api.apify.com/v2/acts/anshumanatrey~smartrecruiters-jobs-search/run-sync-get-dataset-items" \
+  -H "Authorization: Bearer <YOUR_APIFY_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{"searchTerms": ["software engineer"]}'
+```
+
+**Python** (`pip install apify-client`):
 
 ```python
 from apify_client import ApifyClient
@@ -184,7 +211,20 @@ for row in client.dataset(run["defaultDatasetId"]).iterate_items():
     print(row["title"], row["company"], row["location"], row["workType"], row["jobUrl"])
 ```
 
-AI agents can call it through the Apify MCP server at https://mcp.apify.com, and n8n and Make have Apify nodes.
+**JavaScript** (`npm install apify-client`):
+
+```js
+import { ApifyClient } from 'apify-client';
+
+const client = new ApifyClient({ token: '<YOUR_APIFY_TOKEN>' });
+const run = await client.actor('anshumanatrey/smartrecruiters-jobs-search').call({ searchTerms: ['software engineer'] });
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+for (const row of items) console.log(row.title, row.company, row.location, row.workType, row.jobUrl);
+```
+
+**n8n and Make.** In n8n, add the Apify node, pick Run an Actor and get dataset, choose this actor and paste the input JSON: the rows come out as n8n items. In Make, the Apify app's Run an Actor and Get Dataset Items modules do the same.
+
+**AI agents (MCP).** Add `https://mcp.apify.com?tools=anshumanatrey/smartrecruiters-jobs-search` to your MCP client and sign in with Apify, or send `Authorization: Bearer <YOUR_APIFY_TOKEN>`. The agent gets this actor as a tool and sees every input field by its JSON key.
 
 ### Am I charged for closed jobs?
 
@@ -212,16 +252,17 @@ Built and maintained by **Anshuman Atrey** ([@AnshumanAtrey](https://github.com/
 
 ## Sibling actors
 
-| Actor | Use case |
+| Actor | What it searches |
 |---|---|
-| [ashby-jobs-search](https://apify.com/anshumanatrey/ashby-jobs-search) | Every job on every Ashby board, searched live |
-| [workday-job-search](https://apify.com/anshumanatrey/workday-job-search) | Every job at 1,688 Workday employers, searched live |
-| [cornerstone-jobs-search](https://apify.com/anshumanatrey/cornerstone-jobs-search) | Every job on every Cornerstone career site |
-| [deel-jobs-search](https://apify.com/anshumanatrey/deel-jobs-search) | Every job on every Deel ATS career page, with pay |
-| [greenhouse-jobs-search](https://apify.com/anshumanatrey/greenhouse-jobs-search) | Jobs on Greenhouse job boards, searched live |
-| [lever-jobs-search](https://apify.com/anshumanatrey/lever-jobs-search) | Jobs on Lever job sites, searched live |
-| [workable-job-search](https://apify.com/anshumanatrey/workable-job-search) | Jobs on Workable job boards, searched live |
-| [linkedin-harvester](https://apify.com/anshumanatrey/linkedin-harvester) | Email to LinkedIn profile, for the people behind a company |
+| [Ashby Jobs Scraper](https://apify.com/anshumanatrey/ashby-jobs-search) | Jobs from every company on Ashby (jobs.ashbyhq.com), searched live |
+| [Cornerstone Jobs Scraper](https://apify.com/anshumanatrey/cornerstone-jobs-search) | Jobs from every company on Cornerstone (csod.com), searched live |
+| [Workday Jobs Scraper](https://apify.com/anshumanatrey/workday-job-search) | Jobs from every company on Workday (myworkdayjobs.com), searched live |
+| [Deel Jobs Scraper](https://apify.com/anshumanatrey/deel-jobs-search) | Jobs from every company on Deel ATS (jobs.deel.com), with pay |
+| [Greenhouse Jobs Scraper](https://apify.com/anshumanatrey/greenhouse-jobs-search) | Jobs from every company on Greenhouse (boards.greenhouse.io), searched live |
+| [Workable Jobs Scraper](https://apify.com/anshumanatrey/workable-job-search) | Jobs from every company on Workable, in one search |
+| [Lever Jobs Scraper](https://apify.com/anshumanatrey/lever-jobs-search) | Jobs from 2,300+ companies on Lever (jobs.lever.co), searched live |
+
+For the people behind a company: [LinkedIn Profile Finder](https://apify.com/anshumanatrey/linkedin-harvester) turns an email into a public LinkedIn profile.
 
 ## Documentation
 
