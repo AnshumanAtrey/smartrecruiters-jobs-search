@@ -76,7 +76,7 @@ Typical costs (Free and Starter price):
 
 ## Sample output (one record)
 
-From a local run of the engine on 2026-11-02, searching every company for software engineer. TODO_DEPLOYED: the same row as the README's, from a run of the deployed build.
+From run T1JjpjZvjP6XS2NFm on Apify (2026-11-03, build 1.0.1), searching every company for software engineer.
 
 ```json
 {
@@ -94,7 +94,7 @@ From a local run of the engine on 2026-11-02, searching every company for softwa
   "platform": "smartrecruiters",
   "companySlug": "ServiceNow",
   "jobId": "744000159234126",
-  "checkedAt": "2026-11-02T20:48:11+00:00"
+  "checkedAt": "2026-11-03T09:11:15+00:00"
 }
 ```
 

@@ -109,7 +109,7 @@ Example input:
 
 ## What does the output look like?
 
-One row per job, newest first. These rows are from a local run of the actor's engine on 2026-11-02, searching every company for software engineer and saving the 100 newest. TODO_DEPLOYED: the same table and JSON row from a run of the deployed build, with its run id.
+One row per job, newest first. These rows are from run T1JjpjZvjP6XS2NFm on Apify on 2026-11-03 (build 1.0.1), which searched every company for software engineer in 41 seconds and saved the 100 newest of at least 707 matching jobs at 222 companies. Five of them:
 
 | Job title (`title`) | Company name (`company`) | Job location (`location`) | Remote or onsite (`workType`) | Job type (`employmentType`) | Posted on (`postedAt`) |
 |---|---|---|---|---|---|
@@ -137,7 +137,7 @@ One row as JSON:
   "platform": "smartrecruiters",
   "companySlug": "ServiceNow",
   "jobId": "744000159234126",
-  "checkedAt": "2026-11-02T20:48:11+00:00"
+  "checkedAt": "2026-11-03T09:11:15+00:00"
 }
 ```
 
@@ -145,9 +145,9 @@ Full details add `description`, `descriptionHtml`, `reference`, `salaryMin`, `sa
 
 ## How fast is it?
 
-TODO_DEPLOYED: the seconds and cost of the empty form and of the example input at the default memory on the deployed build, with their run ids.
+Every career site in about 40 seconds at the default 2 GB of memory: the example input, software engineer across every company, took 40.7 s on Apify (run T1JjpjZvjP6XS2NFm, 2026-11-03, 100 newest jobs). At 1 GB the same search took 112 s, 2.8 times slower (run ffqkndjmBbL0rfgl8), so keep the default. The empty form reads the same pages: 107 s at 1 GB (run hx5pj1xNsf5tKA7YI), so it should take about 40 s at 2 GB.
 
-Every search reads all 2,917 career sites, about 3,050 requests for an empty form or one keyword (local runs, 2026-11-03: 39 to 43 s), because SmartRecruiters dates each job to the millisecond and the newest jobs can sit on any of them. Each keyword is its own pass over every site, so five keywords took 14,844 requests and 187 s. Requests are paced to 80 a second, below the rate at which SmartRecruiters starts refusing one address. Naming companies in Only these companies reads only those: Bosch Group took 5 requests. Full details add one request per saved job.
+Every search reads all 2,917 career sites, about 3,050 requests for an empty form or one keyword (3,070 and 2,999 in the runs above), because SmartRecruiters dates each job to the millisecond and the newest jobs can sit on any of them. Each keyword is its own pass over every site, so five keywords took 14,844 requests and 187 s in a local run. Requests are paced to 80 a second, below the rate at which SmartRecruiters starts refusing one address. Naming companies in Only these companies reads only those: Bosch Group took 5 requests. Full details add one request per saved job.
 
 ## Common questions
 
