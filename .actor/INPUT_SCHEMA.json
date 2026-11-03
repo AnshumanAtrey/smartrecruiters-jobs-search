@@ -161,9 +161,6 @@
             "editor": "stringList",
             "description": "Paste SmartRecruiters job links to check whether they are still open, one per line, instead of searching. Each link comes back open with the job, closed, or not found. Links on jobs., careers. and www.smartrecruiters.com, API links and smrtr.io short links work too, with or without the title part.",
             "placeholderValue": "https://jobs.smartrecruiters.com/ServiceNow/744000159234126-senior-staff-software-engineer-javascript-runtime-compilers",
-            "example": [
-                "https://jobs.smartrecruiters.com/ServiceNow/744000159234126-senior-staff-software-engineer-javascript-runtime-compilers"
-            ],
             "default": [],
             "sectionCaption": "Check job links",
             "nullable": true

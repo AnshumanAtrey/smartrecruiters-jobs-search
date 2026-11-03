@@ -12,11 +12,26 @@
             "description": "Get the jobs that companies on SmartRecruiters published in the last day, newest first, with the company, location, work type, job type and link. Schedule it daily for a fresh feed of jobs.",
             "input": {
                 "postedWithin": "24 hours",
-                "maxJobs": 100
+                "maxJobs": 100,
+                "searchTerms": [],
+                "location": [],
+                "workType": [],
+                "includeDetails": false,
+                "excludeTerms": [],
+                "employmentType": [],
+                "searchDescriptions": false,
+                "companies": [],
+                "jobUrls": []
             },
             "seoTitle": "New SmartRecruiters Jobs in the Last 24 Hours",
             "seoDescription": "Jobs published on SmartRecruiters career sites in the last day, newest first, with company, location, work type and link. Run it daily for a fresh feed.",
-            "inputSchemaFields": ["searchTerms", "location", "workType", "postedWithin", "maxJobs"],
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "workType",
+                "postedWithin",
+                "maxJobs"
+            ],
             "datasetView": "jobs"
         },
         {
@@ -24,12 +39,30 @@
             "title": "Find remote jobs on SmartRecruiters career sites",
             "description": "Get the newest remote jobs from 2,900+ companies on SmartRecruiters, such as AbbVie, ServiceNow and Turner & Townsend, with the location, job type, posting date and link. Remote is what the company flagged on SmartRecruiters.",
             "input": {
-                "workType": ["remote"],
-                "maxJobs": 100
+                "workType": [
+                    "remote"
+                ],
+                "maxJobs": 100,
+                "searchTerms": [],
+                "location": [],
+                "postedWithin": "any time",
+                "includeDetails": false,
+                "excludeTerms": [],
+                "employmentType": [],
+                "searchDescriptions": false,
+                "companies": [],
+                "jobUrls": []
             },
             "seoTitle": "Remote Jobs on SmartRecruiters Career Sites",
             "seoDescription": "Search 2,900+ companies on SmartRecruiters for remote jobs at once, newest first, with company, location, job type and link. No login needed.",
-            "inputSchemaFields": ["searchTerms", "location", "workType", "employmentType", "postedWithin", "maxJobs"],
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "workType",
+                "employmentType",
+                "postedWithin",
+                "maxJobs"
+            ],
             "datasetView": "jobs"
         },
         {
@@ -37,12 +70,29 @@
             "title": "Find software engineer jobs on SmartRecruiters",
             "description": "Search 2,900+ companies on SmartRecruiters for software engineer jobs at once, such as LinkedIn, ServiceNow and Bosch, with the location, work type, posting date and link, newest first.",
             "input": {
-                "searchTerms": ["software engineer"],
-                "maxJobs": 100
+                "searchTerms": [
+                    "software engineer"
+                ],
+                "maxJobs": 100,
+                "location": [],
+                "workType": [],
+                "postedWithin": "any time",
+                "includeDetails": false,
+                "excludeTerms": [],
+                "employmentType": [],
+                "searchDescriptions": false,
+                "companies": [],
+                "jobUrls": []
             },
             "seoTitle": "Software Engineer Jobs on SmartRecruiters",
             "seoDescription": "Software engineer jobs from 2,900+ companies on SmartRecruiters, newest first, with company, location, remote or onsite and link. One live search.",
-            "inputSchemaFields": ["searchTerms", "location", "workType", "postedWithin", "maxJobs"],
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "workType",
+                "postedWithin",
+                "maxJobs"
+            ],
             "datasetView": "jobs"
         },
         {
@@ -50,13 +100,31 @@
             "title": "Find engineer jobs in Germany on SmartRecruiters",
             "description": "Get the newest engineer jobs in Germany from companies on SmartRecruiters, such as Ramboll, Sopra Steria and ALTEN, with the city, work type, job type, posting date and link.",
             "input": {
-                "searchTerms": ["engineer"],
-                "location": ["Germany"],
-                "maxJobs": 100
+                "searchTerms": [
+                    "engineer"
+                ],
+                "location": [
+                    "Germany"
+                ],
+                "maxJobs": 100,
+                "workType": [],
+                "postedWithin": "any time",
+                "includeDetails": false,
+                "excludeTerms": [],
+                "employmentType": [],
+                "searchDescriptions": false,
+                "companies": [],
+                "jobUrls": []
             },
             "seoTitle": "Engineer Jobs in Germany on SmartRecruiters",
             "seoDescription": "Engineer jobs in Germany from companies hiring on SmartRecruiters, newest first, with city, remote or onsite, job type and link. No login needed.",
-            "inputSchemaFields": ["searchTerms", "location", "workType", "postedWithin", "maxJobs"],
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "workType",
+                "postedWithin",
+                "maxJobs"
+            ],
             "datasetView": "jobs"
         },
         {
@@ -64,14 +132,31 @@
             "title": "Get US nurse jobs from SmartRecruiters with pay",
             "description": "Get the newest nurse jobs in the United States from SmartRecruiters with full details: the description, the pay with its period when the employer publishes it, the reference number, city and state. Ready for a job board or an AI agent.",
             "input": {
-                "searchTerms": ["nurse"],
-                "location": ["United States"],
+                "searchTerms": [
+                    "nurse"
+                ],
+                "location": [
+                    "United States"
+                ],
                 "includeDetails": true,
-                "maxJobs": 100
+                "maxJobs": 100,
+                "workType": [],
+                "postedWithin": "any time",
+                "excludeTerms": [],
+                "employmentType": [],
+                "searchDescriptions": false,
+                "companies": [],
+                "jobUrls": []
             },
             "seoTitle": "US Nurse Jobs With Pay From SmartRecruiters",
             "seoDescription": "The newest US nurse jobs from SmartRecruiters career sites with the full description, pay and its period when shown, city and state. Clean JSON or CSV.",
-            "inputSchemaFields": ["searchTerms", "location", "postedWithin", "maxJobs", "includeDetails"],
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "postedWithin",
+                "maxJobs",
+                "includeDetails"
+            ],
             "datasetView": "details"
         },
         {
@@ -79,12 +164,30 @@
             "title": "Find internships on SmartRecruiters career sites",
             "description": "Get the newest internships from companies on SmartRecruiters, such as Bertelsmann, Mazars and Red Bull, with the location, work type, posting date and link. Internship is the job type the company set on SmartRecruiters.",
             "input": {
-                "employmentType": ["intern"],
-                "maxJobs": 100
+                "employmentType": [
+                    "intern"
+                ],
+                "maxJobs": 100,
+                "searchTerms": [],
+                "location": [],
+                "workType": [],
+                "postedWithin": "any time",
+                "includeDetails": false,
+                "excludeTerms": [],
+                "searchDescriptions": false,
+                "companies": [],
+                "jobUrls": []
             },
             "seoTitle": "Internships on SmartRecruiters Career Sites",
             "seoDescription": "The newest internships from companies hiring on SmartRecruiters, with company, location, remote or onsite and link. Narrow by place or field too.",
-            "inputSchemaFields": ["searchTerms", "location", "workType", "employmentType", "postedWithin", "maxJobs"],
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "workType",
+                "employmentType",
+                "postedWithin",
+                "maxJobs"
+            ],
             "datasetView": "jobs"
         },
         {
@@ -92,12 +195,28 @@
             "title": "Get the newest Bosch jobs from SmartRecruiters",
             "description": "Get the newest open jobs at Bosch, read live from its SmartRecruiters career sites, with the location, work type, job type, department, posting date and link.",
             "input": {
-                "companies": ["Bosch Group"],
-                "maxJobs": 100
+                "companies": [
+                    "Bosch Group"
+                ],
+                "maxJobs": 100,
+                "searchTerms": [],
+                "location": [],
+                "workType": [],
+                "postedWithin": "any time",
+                "includeDetails": false,
+                "excludeTerms": [],
+                "employmentType": [],
+                "searchDescriptions": false,
+                "jobUrls": []
             },
             "seoTitle": "Bosch Jobs API: Newest Open Roles at Bosch",
             "seoDescription": "The newest open Bosch jobs, read live from SmartRecruiters, with location, remote or onsite, job type, department and link. No login or API key.",
-            "inputSchemaFields": ["searchTerms", "location", "companies", "maxJobs"],
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "companies",
+                "maxJobs"
+            ],
             "datasetView": "jobs"
         },
         {
@@ -105,11 +224,25 @@
             "title": "Check whether SmartRecruiters job links are still open",
             "description": "Paste SmartRecruiters job links and each comes back open, closed or not found, with the job's details when it is open. Handy for cleaning dead links out of a job board or a spreadsheet.",
             "input": {
-                "jobUrls": ["https://jobs.smartrecruiters.com/ServiceNow/744000159234126-senior-staff-software-engineer-javascript-runtime-compilers"]
+                "jobUrls": [
+                    "https://jobs.smartrecruiters.com/ServiceNow/744000159234126-senior-staff-software-engineer-javascript-runtime-compilers"
+                ],
+                "searchTerms": [],
+                "location": [],
+                "workType": [],
+                "postedWithin": "any time",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "employmentType": [],
+                "searchDescriptions": false,
+                "companies": []
             },
             "seoTitle": "Check if SmartRecruiters Job Links Are Open",
             "seoDescription": "Paste SmartRecruiters job links and see which are open, closed or gone. Clean dead links out of a job board or a spreadsheet, with no login or API key.",
-            "inputSchemaFields": ["jobUrls"],
+            "inputSchemaFields": [
+                "jobUrls"
+            ],
             "datasetView": "jobs"
         }
     ]
