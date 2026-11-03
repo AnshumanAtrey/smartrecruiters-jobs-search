@@ -1,5 +1,5 @@
 {
-    "$comment": "Example tasks published on the Store by scripts/publish-tasks.mjs after every deploy (CI only). Each one is a search people type, with its own Google-indexed landing page and .md (manager/rules/SEO.md section 18). Limits: title 63, description 400, seoTitle 60, seoDescription 160 (154 kept), 10 per actor. inputSchemaFields must stay fields of the input schema, or the page stops showing after a build. Every input below returned rows in a local run of engine 49701ad on 2026-11-02, and the companies each description names were among its rows. options.memoryMbytes follows defaultRunOptions in store.json (TODO_DEPLOYED: the measured default).",
+    "$comment": "Example tasks published on the Store by scripts/publish-tasks.mjs after every deploy (CI only). Each one is a search people type, with its own Google-indexed landing page and .md (manager/rules/SEO.md section 18). Limits: title 63, description 400, seoTitle 60, seoDescription 160 (154 kept), 10 per actor. inputSchemaFields must stay fields of the input schema, or the page stops showing after a build. Every input below returned rows in a local run of the final engine (branch platform/smartrecruiters, 2026-11-03), and the companies each description names were among its rows. options.memoryMbytes follows defaultRunOptions in store.json (TODO_DEPLOYED: the measured default).",
     "options": {
         "build": "latest",
         "memoryMbytes": 2048,
@@ -77,7 +77,7 @@
         {
             "name": "internships-on-smartrecruiters",
             "title": "Find internships on SmartRecruiters career sites",
-            "description": "Get the newest internships from companies on SmartRecruiters, such as Clifford Chance, Mazars and Red Bull, with the location, work type, posting date and link. Internship is the job type the company set on SmartRecruiters.",
+            "description": "Get the newest internships from companies on SmartRecruiters, such as Bertelsmann, Mazars and Red Bull, with the location, work type, posting date and link. Internship is the job type the company set on SmartRecruiters.",
             "input": {
                 "employmentType": ["intern"],
                 "maxJobs": 100

@@ -6,19 +6,20 @@ Use it as a SmartRecruiters jobs API, a careers.smartrecruiters.com scraper or a
 
 ## What does it do?
 
-- **Searches 2,943 career sites of 2,931 companies at once**: 226,290 open jobs in 200 countries on 2026-11-02, at companies such as Bosch, ServiceNow, LinkedIn, Domino's, Accor, H&M, Deloitte, Canva, Ubisoft and Delivery Hero.
+- **Searches 2,917 career sites of 2,907 companies at once**: 222,729 open jobs in 198 countries on 2026-11-03, at companies such as Bosch, ServiceNow, LinkedIn, Domino's, Accor, H&M, Deloitte, Canva, Ubisoft and Delivery Hero.
 - **One keyword is enough.** Type a job title and press Start. Leave the form empty for the newest jobs of every kind.
 - **Newest first, read live.** Every job comes from SmartRecruiters at the moment of your run, dated to the millisecond, not from a stored copy.
-- **Fresh jobs in volume.** 7,227 jobs were posted on these career sites in the 24 hours before a count on 2026-11-02, and 35,829 in 7 days.
+- **Fresh jobs in volume.** 8,406 jobs were posted on these career sites in the 24 hours before a count on 2026-11-03, and 36,138 in 7 days.
 - **Filters that take what people type.** Germany, EMEA, Remote, part time, last 24 hours, or a pasted Google dork such as `site:careers.smartrecruiters.com/BoschGroup intext:software`.
 - **Pay and full descriptions when you want them.** Full details add the job ad, the pay with its period when the company publishes it, the reference number and the place.
 - **Checks job links.** Paste links and each comes back open, closed or not found.
 
 ## How is it different from other SmartRecruiters scrapers?
 
-- **You do not need to know the companies.** SmartRecruiters publishes no list of its customers, and 67 of the 124 Store actors with SmartRecruiters in their name or title will not start without a company ID, link or board (2026-11-02). This actor carries a list of 2,943 career sites built from SmartRecruiters' own company search, web archives and public job data, so one keyword covers them all and finds companies you had never heard of.
-- **Years-old postings stay out.** SmartRecruiters keeps a job open until its company closes it, and many never do: on 2026-11-02, 9,650 career sites had posted nothing for two years yet still listed 180,513 jobs as open, 129,639 of them on sites whose newest job was from 2017. A search leaves those sites out; name such a company and it is read, with each job's real date.
-- **Companies that SmartRecruiters' own job search leaves out.** The cross-company search on jobs.smartrecruiters.com answers with only the newest 100 jobs of a query, and 1,387 career sites with open jobs were missing from its company list on 2026-11-02. AbbVie (1,838 jobs) and the City of New York (1,400) are two of them, and this actor reads both.
+- **You do not need to know the companies.** SmartRecruiters publishes no list of its customers, and 67 of the 124 Store actors with SmartRecruiters in their name or title will not start without a company ID, link or board (2026-11-02). This actor carries a list of 2,917 career sites built from SmartRecruiters' own company search, web archives and public job data, so one keyword covers them all and finds companies you had never heard of.
+- **Years-old postings stay out.** SmartRecruiters keeps a job open until its company closes it, and many never do: on 2026-11-03, 9,626 career sites had posted nothing for two years yet still listed 179,872 jobs as open, 129,611 of them on sites whose newest job was from 2017. A search leaves those sites out; name such a company and it is read, with each job's real date.
+- **Test postings stay out.** Sandbox, test and demo accounts post tests, templates and copies of real jobs. On 2026-11-03, 46 such accounts held 3,714 postings, and 748 more on 33 real career sites were titled as tests, such as Pilot Flying J's `(J_SYNC_TEST)Deli Baker`. A search leaves them out, so you never pay for one.
+- **Companies that SmartRecruiters' own job search leaves out.** The cross-company search on jobs.smartrecruiters.com answers with only the newest 100 jobs of a query, and 1,387 career sites with open jobs were missing from its company list on 2026-11-02, 617 of them among the 2,917 this actor searches. AbbVie (1,855 jobs on 2026-11-03) and the City of New York (1,397) are two of them, and this actor reads both.
 - **The real posting date, to the millisecond.** Each job's date is the instant its own page gives Google as datePosted (11 of 11 pages checked), so the last 24 hours means 24 hours.
 - **A place is where the job is.** Some companies file an office under a continent: Turner & Townsend lists Amsterdam under "Europe". This actor reads that as Amsterdam, Netherlands, so a search for Germany does not return it.
 - **Company IDs in any capitals.** BoschGroup and boschgroup read the same career site, and a name such as Bosch Group finds each of its career sites on the list.
@@ -47,7 +48,7 @@ On paid Apify plans these are 10% less on Scale ($0.00225 and $0.00315) and 20% 
 | 100 newest jobs | $0.25 |
 | 100 jobs with full details | $0.35 |
 | 1,000 jobs | $2.50 |
-| Every job posted in one day (7,227 on 2026-11-02) | $18.07 |
+| Every job posted in one day (8,406 on 2026-11-03) | $21.02 |
 
 Apify's free $5 monthly credit covers 2,000 jobs, or about 1,400 with full details. Number of jobs (`maxJobs`) sets the most a run can cost, and a run stops at its spending limit with a message saying so.
 
@@ -71,7 +72,7 @@ Every actor on the Apify Store whose listing says it reads SmartRecruiters jobs 
 | pulsedata/career-page-jobs-scraper | 5 | $0.002 | none | 12 ATS, the board or careers-page links you give it |
 | jobo.world/smartrecruiters-jobs-scraper-api | 5 | $0.004 | none | SmartRecruiters only, by keyword from its own index |
 | memo23/smartrecruiters-scraper | 3 | $0.0009 | $0.025 | SmartRecruiters only, the company IDs you give it |
-| This actor | new | $0.0025 | none | SmartRecruiters only, 2,943 career sites read live, no IDs needed |
+| This actor | new | $0.0025 | none | SmartRecruiters only, 2,917 career sites read live, no IDs needed |
 
 Per job is each actor's main event; some charge more for extra data. Where others are cheaper: bovi, openclawai, santamaria-automations, blackfalcondata, pulsedata and memo23's SmartRecruiters actor cost less per job when you already know the companies, and jobspipe costs less per job across its sources. Where others do more: the multi-ATS actors cover many platforms in one run. The other 120 actors with SmartRecruiters in their name or title had 2 users or fewer each.
 
@@ -90,7 +91,7 @@ Nothing is required. Type a job title and press Start, or press Start with the f
 | Number of jobs (`maxJobs`) | How many, newest first: 100 by default, 0 for every match |
 | Full details (`includeDetails`) | Adds the description as text and HTML, pay with its currency and period, the reference number, city, region, country and country code |
 | Leave out words (`excludeTerms`) | Drops jobs whose title has these words, such as senior or intern |
-| Job type (`employmentType`) | full-time, part-time, contract or intern, the four job types SmartRecruiters jobs carry |
+| Job type (`employmentType`) | full-time, part-time, contract or intern, the four job types SmartRecruiters jobs carry (its Casual counts as part-time): temporary or seasonal finds nothing |
 | Match descriptions (`searchDescriptions`) | Finds your words in the description too, not only the title |
 | Only these companies (`companies`) | A name (Bosch Group), the company ID (BoschGroup) or a SmartRecruiters link. Empty searches every company on the list |
 | Job links to check (`jobUrls`) | Paste job links, smrtr.io short links included, to check whether they are still open, instead of searching |
@@ -146,25 +147,25 @@ Full details add `description`, `descriptionHtml`, `reference`, `salaryMin`, `sa
 
 TODO_DEPLOYED: the seconds and cost of the empty form and of the example input at the default memory on the deployed build, with their run ids.
 
-Every search reads all 2,943 career sites, about 3,100 requests for an empty form or one keyword (local runs, 2026-11-02), because SmartRecruiters dates each job to the millisecond and the newest jobs can sit on any of them. Naming companies in Only these companies reads only those: Bosch Group took 5 requests. Full details add one request per saved job.
+Every search reads all 2,917 career sites, about 3,050 requests for an empty form or one keyword (local runs, 2026-11-03: 39 to 43 s), because SmartRecruiters dates each job to the millisecond and the newest jobs can sit on any of them. Each keyword is its own pass over every site, so five keywords took 14,844 requests and 187 s. Requests are paced to 80 a second, below the rate at which SmartRecruiters starts refusing one address. Naming companies in Only these companies reads only those: Bosch Group took 5 requests. Full details add one request per saved job.
 
 ## Common questions
 
 ### How does it find the companies?
 
-SmartRecruiters publishes no customer list, so the list is built the way the `site:careers.smartrecruiters.com` dork works, at the source: SmartRecruiters' own company search, the Wayback Machine, Common Crawl, freehire's public job data and a public GitHub list gave 15,969 candidates, each checked live on 2026-11-02. 12,593 career sites had open jobs, and the 2,943 of them that posted within two years are searched. An estimate from how much the sources overlap puts the sites found at 83 to 90% of all SmartRecruiters career sites with open jobs, holding 93 to 96% of their jobs, possibly less, because the sources are not independent. To search a company that is not on the list, type its name or paste its link into Only these companies.
+SmartRecruiters publishes no customer list, so the list is built the way the `site:careers.smartrecruiters.com` dork works, at the source: SmartRecruiters' own company search, the Wayback Machine, Common Crawl, freehire's public job data and a public GitHub list gave 15,969 candidates, each checked live on 2026-11-02, and every site found was checked again on 2026-11-03. 12,589 career sites had open jobs: the 2,917 that posted within two years are searched, and 46 sandbox, test and demo accounts are left out. An estimate from how much the sources overlap puts the sites found at 83 to 90% of all SmartRecruiters career sites with open jobs, holding 93 to 96% of their jobs, possibly less, because the sources are not independent. To search a company that is not on the list, type its name or paste its link into Only these companies.
 
 ### Why does a search leave some companies out?
 
-SmartRecruiters keeps a job open until the company closes it, and many never do. On 2026-11-02, 9,650 career sites had posted nothing since 2024-11-02 yet still listed 180,513 jobs as open. A search skips those sites, so the newest jobs it returns are live ones, and each refresh of the list checks them again. Name such a company in Only these companies and it is read, with each job's real date.
+SmartRecruiters keeps a job open until the company closes it, and many never do. On 2026-11-03, 9,626 career sites had posted nothing since 2024-11-03 yet still listed 179,872 jobs as open. A search skips those sites, so the newest jobs it returns are live ones, and each refresh of the list checks them again. It also skips sandbox, test and demo accounts, whose postings are tests and copies. Name such a company in Only these companies and it is read, with each job's real date.
 
 ### Why is there no pay on most rows?
 
-SmartRecruiters' job list carries no pay, so it comes only with full details on, from each job's own record: 16% of a sample of 2,000 jobs had pay on 2026-11-02, and 78 of the 100 newest nurse jobs in the United States in a run the same day. The period is the one the company states (year, month, week, day or hour). A maximum stated alone reads "up to", and a period nobody stated is never guessed.
+SmartRecruiters' job list carries no pay, so it comes only with full details on, from each job's own record: 15% of a sample of 2,000 jobs had pay on 2026-11-03, and 70 of the 100 newest nurse jobs in the United States in a run the same day. The period is the one the company states (year, month, week, day or hour). A maximum stated alone reads "up to", and a period nobody stated is never guessed.
 
 ### What does remote mean here?
 
-What the company flagged on SmartRecruiters: 4.9% of jobs are remote and 13.5% hybrid (2026-11-02). Every other job is onsite, SmartRecruiters' own third choice.
+What the company flagged on SmartRecruiters: 4.8% of jobs are remote and 13.7% hybrid (2026-11-03). Every other job is onsite, SmartRecruiters' own third choice.
 
 ### Does it need a login or an API key?
 
@@ -196,14 +197,14 @@ It reads public job postings. You are responsible for how you use the data, incl
 ## Limitations
 
 - One place per job: SmartRecruiters stores one location for each posting, and its API gives no closing date.
-- Pay comes only with full details, and about 5 jobs in 6 show none.
+- Pay comes only with full details, and about 6 jobs in 7 show none.
 - Every search reads every career site on the list, so a filter that matches almost nothing, such as a rare place, reads every page of every site and takes several times longer than a normal search.
-- Some large posters are staffing firms or job boards that post for other employers, such as Jobs for Humanity (2,823 jobs on 2026-11-02).
+- Some large posters are staffing firms or job boards that post for other employers, such as Jobs for Humanity (2,823 jobs on 2026-11-03).
 - The department field holds what the company typed: sometimes a person's name, or several teams joined by a vertical bar.
 - Titles and descriptions come in the company's own language.
 - The same job at the same place at one company is delivered once.
 - A company that locked its job API, such as CHECK24, cannot be read and comes back as not found.
-- The list of career sites was built on 2026-11-02. A company that joined later, or a quiet one that starts posting again, is searched when you name it, until the next refresh of the list.
+- The list of career sites was last checked on 2026-11-03. A company that joined later, or a quiet one that starts posting again, is searched when you name it, until the next refresh of the list.
 
 ## Who maintains it?
 
@@ -230,4 +231,4 @@ Built and maintained by **Anshuman Atrey** ([@AnshumanAtrey](https://github.com/
 
 ## Last updated
 
-2026-11-02 (version 1.0)
+2026-11-03 (version 1.0)

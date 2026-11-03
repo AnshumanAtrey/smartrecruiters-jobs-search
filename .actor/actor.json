@@ -2,7 +2,7 @@
     "actorSpecification": 1,
     "name": "smartrecruiters-jobs-search",
     "title": "SmartRecruiters Jobs Scraper & API - Remote, Last 24 Hours",
-    "description": "SmartRecruiters jobs scraper and API for 2,900+ companies on careers.smartrecruiters.com, searched live by job title, location, remote, job type and date, newest first. 226,000+ open jobs, no company IDs needed. The site:careers.smartrecruiters.com dork at the source: descriptions, pay, link checks.",
+    "description": "SmartRecruiters jobs scraper and API for 2,900+ companies on careers.smartrecruiters.com, searched live by job title, location, remote, job type and date, newest first. 222,000+ open jobs, no company IDs needed. The site:careers.smartrecruiters.com dork at the source: descriptions, pay, link checks.",
     "version": "1.0",
     "buildTag": "latest",
     "categories": [
@@ -66,7 +66,7 @@
                             "null"
                         ],
                         "title": "Job type (employmentType)",
-                        "description": "full-time (SmartRecruiters' Permanent), part-time, contract or intern. Empty when the company set none, about 1% of jobs.",
+                        "description": "full-time (SmartRecruiters' Permanent), part-time (its Part-time and Casual), contract or intern. Empty when the company set none, 0.3% of jobs.",
                         "example": "full-time"
                     },
                     "department": {
@@ -84,7 +84,7 @@
                             "null"
                         ],
                         "title": "Pay summary (salary)",
-                        "description": "With details on: the pay the company publishes, with its currency and period; a maximum stated alone reads \"up to\". Empty without details, and when the company shows no pay (about 5 jobs in 6).",
+                        "description": "With details on: the pay the company publishes, with its currency and period; a maximum stated alone reads \"up to\". Empty without details, and when the company shows no pay (about 6 jobs in 7).",
                         "example": "USD 37 - 60.98 an hour"
                     },
                     "postedAt": {

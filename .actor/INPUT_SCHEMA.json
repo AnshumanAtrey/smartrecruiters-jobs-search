@@ -1,6 +1,6 @@
 {
     "title": "SmartRecruiters Jobs Search",
-    "description": "Type a job title and press Start: you get the newest matching jobs from 2,900+ companies on SmartRecruiters (226,000+ open jobs). Every other field is optional. Press Start with the form empty for the newest jobs of every kind.",
+    "description": "Type a job title and press Start: you get the newest matching jobs from 2,900+ companies on SmartRecruiters (222,000+ open jobs). Every other field is optional. Press Start with the form empty for the newest jobs of every kind.",
     "type": "object",
     "schemaVersion": 1,
     "properties": {
@@ -91,7 +91,7 @@
             "title": "Full details (includeDetails)",
             "type": "boolean",
             "editor": "checkbox",
-            "description": "Tick to add the full details of each job: the description as text and HTML, the pay with its period when the company publishes it (about 1 job in 6), the reference number, and the city, region, country and country code. A job with details costs $3.50 per 1,000 instead of $2.50.",
+            "description": "Tick to add the full details of each job: the description as text and HTML, the pay with its period when the company publishes it (about 1 job in 7), the reference number, and the city, region, country and country code. A job with details costs $3.50 per 1,000 instead of $2.50.",
             "default": false,
             "nullable": true
         },
@@ -112,7 +112,7 @@
             "title": "Job type (employmentType)",
             "type": "array",
             "editor": "select",
-            "description": "Pick the job type: full-time, part-time, contract or internship, or several. Leave it empty for every job type. These are the four job types SmartRecruiters jobs carry (its Permanent is full-time); about 1% of jobs state none and this filter leaves them out. Typed words such as freelance work too.",
+            "description": "Pick the job type: full-time, part-time, contract or internship, or several. Leave it empty for every job type. These are the four job types SmartRecruiters jobs carry (its Permanent is full-time and its Casual, the hourly work of Australia and New Zealand, part-time), so temporary or seasonal finds nothing here; 0.3% of jobs state none and this filter leaves them out. Typed words such as freelance or casual work too.",
             "items": {
                 "type": "string",
                 "enumSuggestedValues": [
