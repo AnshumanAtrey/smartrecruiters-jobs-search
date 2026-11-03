@@ -42,7 +42,7 @@ PAY_PER_EVENT model, platform usage included, no start fee:
 - Job: $0.0025 per saved job ($2.50 per 1,000), and per checked link that is closed or not found
 - Job with details: $0.0035 per saved job with full details on ($3.50 per 1,000)
 
-On paid Apify plans these are 10% less on Scale ($0.00225 and $0.00315) and 20% less on Business and above ($0.002 and $0.0028).
+SmartRecruiters Jobs Scraper's Apify Store header, "from $2.00 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE and BRONZE users (Apify's Free and Starter plans) pay the base prices above, $0.0025 a job and $0.0035 with details; SILVER (Scale) pays 10% less, $0.00225 and $0.00315; GOLD (Business) and above pay 20% less, $0.002 and $0.0028. There is no start fee, so the job price is the whole cost on every plan.
 
 Typical costs (Free and Starter price):
 

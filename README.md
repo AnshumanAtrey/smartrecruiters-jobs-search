@@ -41,7 +41,7 @@ Pay per event: $2.50 per 1,000 jobs, or $3.50 per 1,000 with full details. Apify
 | Job | $0.0025 | One saved job, and one checked link that is closed or not found |
 | Job with details | $0.0035 | One saved job with full details on |
 
-On paid Apify plans these are 10% less on Scale ($0.00225 and $0.00315) and 20% less on Business and above ($0.002 and $0.0028). The Store page shows that Business price, from $2.00 per 1,000 jobs.
+SmartRecruiters Jobs Scraper's Apify Store header, "from $2.00 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE and BRONZE users (Apify's Free and Starter plans) pay the base price in the table, $0.0025 a job and $0.0035 with details; SILVER (Scale) pays 10% less, $0.00225 and $0.00315; GOLD (Business) and above pay 20% less, $0.002 and $0.0028. There is no start fee, so the job price is the whole cost on every plan.
 
 | Job (Free and Starter price) | Cost |
 |---|---|
@@ -153,7 +153,7 @@ Every search reads all 2,917 career sites, about 3,050 requests for an empty for
 
 ### How does it find the companies?
 
-SmartRecruiters publishes no customer list, so the list is built the way the `site:careers.smartrecruiters.com` dork works, at the source: SmartRecruiters' own company search, the Wayback Machine, Common Crawl, freehire's public job data and a public GitHub list gave 15,969 candidates, each checked live on 2026-11-02, and every site found was checked again on 2026-11-03. 12,589 career sites had open jobs: the 2,917 that posted within two years are searched, and 46 sandbox, test and demo accounts are left out. An estimate from how much the sources overlap puts the sites found at 83 to 90% of all SmartRecruiters career sites with open jobs, holding 93 to 96% of their jobs, possibly less, because the sources are not independent. To search a company that is not on the list, type its name or paste its link into Only these companies.
+SmartRecruiters publishes no customer list, so SmartRecruiters Jobs Scraper's list of career sites is built the way the `site:careers.smartrecruiters.com` dork works, at the source: SmartRecruiters' own company search, the Wayback Machine, Common Crawl, freehire's public job data and a public GitHub list gave 15,969 candidates, each checked live on 2026-11-02, and every site found was checked again on 2026-11-03. 12,589 career sites had open jobs: the 2,917 that posted within two years are searched, and 46 sandbox, test and demo accounts are left out. An estimate from how much the sources overlap puts the sites found at 83 to 90% of all SmartRecruiters career sites with open jobs, holding 93 to 96% of their jobs, possibly less, because the sources are not independent. To search a company that is not on the list, type its name or paste its link into Only these companies.
 
 ### Why does a search leave some companies out?
 
@@ -161,35 +161,35 @@ SmartRecruiters keeps a job open until the company closes it, and many never do.
 
 ### Why is there no pay on most rows?
 
-SmartRecruiters' job list carries no pay, so it comes only with full details on, from each job's own record: 15% of a sample of 2,000 jobs had pay on 2026-11-03, and 70 of the 100 newest nurse jobs in the United States in a run the same day. The period is the one the company states (year, month, week, day or hour). A maximum stated alone reads "up to", and a period nobody stated is never guessed.
+SmartRecruiters' job list carries no pay, so SmartRecruiters Jobs Scraper adds pay only with full details on, from each job's own record: 15% of a sample of 2,000 jobs had pay on 2026-11-03, and 70 of the 100 newest nurse jobs in the United States in a run the same day. The period is the one the company states (year, month, week, day or hour). A maximum stated alone reads "up to", and a period nobody stated is never guessed.
 
 ### What does remote mean here?
 
-What the company flagged on SmartRecruiters: 4.8% of jobs are remote and 13.7% hybrid (2026-11-03). Every other job is onsite, SmartRecruiters' own third choice.
+In SmartRecruiters Jobs Scraper, remote and hybrid mean what the company flagged on SmartRecruiters: 4.8% of jobs are remote and 13.7% hybrid (2026-11-03). Every other job is onsite, SmartRecruiters' own third choice.
 
 ### Does it need a login or an API key?
 
-No. It reads SmartRecruiters' public Posting API, the one SmartRecruiters offers its customers for building their own career sites, and public jobs need no key there. You need only an Apify account.
+SmartRecruiters Jobs Scraper needs no login and no API key: it reads SmartRecruiters' public Posting API, the one SmartRecruiters offers its customers for building their own career sites, and public jobs need no key there. You need only an Apify account.
 
 ### Does it work on Apify's free plan?
 
-Yes. Apify's free $5 monthly credit pays for 2,000 jobs, or about 1,400 with full details. There is no start fee, so a small run costs only its rows.
+SmartRecruiters Jobs Scraper works on Apify's free plan, which pays the base price: $0.0025 a job, or $0.0035 with full details. The free $5 monthly credit pays for 2,000 jobs, or about 1,400 with full details. There is no start fee, so a small run costs only its rows.
 
 ### How often should I run it?
 
-Once a day keeps a feed fresh: set Posted in the last (`postedWithin`) to 24 hours and Number of jobs (`maxJobs`) to 0 to get every job posted that day, 8,406 in the 24 hours before a count on 2026-11-03 ($21.02), or add a job title or place to narrow it. Set the run up under Schedules in Apify Console, and match rows on `jobId` to skip jobs you already have.
+Running SmartRecruiters Jobs Scraper once a day keeps a job feed fresh: set Posted in the last (`postedWithin`) to 24 hours and Number of jobs (`maxJobs`) to 0 to get every job posted that day, 8,406 in the 24 hours before a count on 2026-11-03 ($21.02), or add a job title or place to narrow it. Set the run up under Schedules in Apify Console, and match rows on `jobId` to skip jobs you already have.
 
 ### How do I get every job of one company?
 
-Type its name in Only these companies (`companies`), such as Bosch Group, its company ID (BoschGroup, in any capitals) or its SmartRecruiters link, and set Number of jobs (`maxJobs`) to 0 for every open job. Only its career sites are read: Bosch Group took 5 requests. A company that posted nothing in two years is read too when you name it.
+To get every open job of one company with SmartRecruiters Jobs Scraper, type the company's name in Only these companies (`companies`), such as Bosch Group, its company ID (BoschGroup, in any capitals) or its SmartRecruiters link, and set Number of jobs (`maxJobs`) to 0. Only its career sites are read: Bosch Group took 5 requests. A company that posted nothing in two years is read too when you name it.
 
 ### How do I check a list of job links?
 
-Paste the links into Job links to check (`jobUrls`), one per line, instead of searching. Links on jobs., careers. and www.smartrecruiters.com, API links and smrtr.io short links all work, with or without the title part. Each link comes back as one row, open with the job's fields, or closed or not found with its link, so 10 links come to $0.025.
+SmartRecruiters Jobs Scraper checks whether SmartRecruiters job links are still open when you paste them into Job links to check (`jobUrls`), one per line, instead of searching. Links on jobs., careers. and www.smartrecruiters.com, API links and smrtr.io short links all work, with or without the title part. Each link comes back as one row, open with the job's fields, or closed or not found with its link, so 10 links come to $0.025.
 
 ### How do I call it from the API, Python, JavaScript, n8n or an AI agent?
 
-Each way uses your Apify token (Apify Console, Settings, API & Integrations) and takes the input as JSON, with the field names above.
+SmartRecruiters Jobs Scraper runs from the Apify API, Python, JavaScript, n8n, Make or an AI agent over MCP. Each way uses your Apify token (Apify Console, Settings, API & Integrations) and takes the input as JSON keyed by the field names, such as `searchTerms` and `maxJobs`.
 
 **API.** One call runs the actor and returns its rows. Apify stops that wait after 300 seconds: a search of every career site takes about 40 seconds, well inside it, but for a bigger run, such as every job (`maxJobs` 0), use a client below, which waits until the run ends.
 
@@ -207,7 +207,7 @@ from apify_client import ApifyClient
 
 client = ApifyClient("<YOUR_APIFY_TOKEN>")
 run = client.actor("anshumanatrey/smartrecruiters-jobs-search").call(run_input={"searchTerms": ["software engineer"]})
-for row in client.dataset(run.default_dataset_id).iterate_items()  # apify-client 3+; on 2.x use run["defaultDatasetId"]:
+for row in client.dataset(run.default_dataset_id).iterate_items():  # apify-client 3+; on 2.x use run["defaultDatasetId"]
     print(row["title"], row["company"], row["location"], row["workType"], row["jobUrl"])
 ```
 
@@ -228,11 +228,11 @@ for (const row of items) console.log(row.title, row.company, row.location, row.w
 
 ### Am I charged for closed jobs?
 
-A search returns open jobs only. A pasted link that turns out closed or not found is one Job row, because it was checked and answered.
+SmartRecruiters Jobs Scraper charges for a closed job only when you paste its link to check. A search returns open jobs only, and a pasted link that turns out closed or not found is one Job row, because it was checked and answered.
 
 ### Is it legal to use?
 
-It reads public job postings. You are responsible for how you use the data, including each site's terms and the privacy laws that apply to you.
+SmartRecruiters Jobs Scraper reads public job postings. You are responsible for how you use the data, including each site's terms and the privacy laws that apply to you.
 
 ## Limitations
 
