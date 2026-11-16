@@ -1,0 +1,147 @@
+# SmartRecruiters Jobs Scraper & API - Remote, Last 24 Hours
+
+> SmartRecruiters jobs scraper and API for 2,900+ companies on careers.smartrecruiters.com, searched live by job title, location, remote, job type and date, newest first.
+
+## Summary
+
+SmartRecruiters Jobs Search is an Apify actor that searches the career sites of 2,900+ companies on SmartRecruiters (careers.smartrecruiters.com and jobs.smartrecruiters.com) at once and returns one row per job, newest first: title, company, location, remote, hybrid or onsite, job type, department, exact posting time and link. It covers 2,917 career sites of 2,907 companies and 222,729 open jobs in 198 countries (2026-11-03), including Bosch, ServiceNow, LinkedIn, Domino's, Accor, H&M, Deloitte, Canva and Ubisoft. It reads SmartRecruiters' public Posting API live at run time with no login and no API key. Full details add the description, the pay with its period when the company publishes it (15% of a 2,000-job sample), the reference number and the city, region and country.
+
+Store: https://apify.com/anshumanatrey/smartrecruiters-jobs-search
+Source: https://github.com/AnshumanAtrey/smartrecruiters-jobs-search
+
+## Use it from an AI assistant
+
+- Claude (claude.ai and the desktop app): https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=SmartRecruiters%20Jobs&connectorUrl=https%3A%2F%2Fmcp.apify.com%3Ftools%3Danshumanatrey%2Fsmartrecruiters-jobs-search (click Continue, sign in to Apify, Allow).
+- All 18 job boards at once, one Claude connector to Global Job Search API (https://apify.com/anshumanatrey/global-job-search-api), which searches this board and 17 more in one run: https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Global%20Job%20Search&connectorUrl=https%3A%2F%2Fmcp.apify.com%3Ftools%3Danshumanatrey%2Fglobal-job-search-api
+- Claude Code: claude mcp add --transport http smartrecruiters-jobs-search "https://mcp.apify.com?tools=anshumanatrey/smartrecruiters-jobs-search", then /mcp to sign in to Apify.
+- Codex: codex mcp add smartrecruiters-jobs-search --url "https://mcp.apify.com?tools=anshumanatrey/smartrecruiters-jobs-search", then codex mcp login smartrecruiters-jobs-search.
+- Any other MCP client: https://mcp.apify.com?tools=anshumanatrey/smartrecruiters-jobs-search, signed in with Apify or Authorization: Bearer <APIFY_TOKEN>.
+
+## Key features
+
+- 2,917 career sites at once, with no company IDs needed.
+- One keyword is enough; an empty form returns the newest jobs of every kind.
+- Newest first by the instant SmartRecruiters published the job, exact to the millisecond, read live, not from a stored copy.
+- 8,406 jobs posted in the 24 hours before a count on 2026-11-03.
+- Years-old postings left out: 9,626 career sites that posted nothing in two years are read only when named.
+- Test postings left out: 46 sandbox, test and demo accounts and 748 postings titled as tests on real career sites (2026-11-03).
+- Place filter by city, state, country or region: Germany, EMEA, United States. An office a company filed under a continent counts where it is.
+- Reads a pasted Google dork such as site:careers.smartrecruiters.com/BoschGroup intext:software.
+- Job link check: each pasted link comes back open, closed or not found.
+
+## Input keys
+
+- Job titles to find (searchTerms): one per line; a job matches when its title has every word, with or without accents. SmartRecruiters' own search finds the words, so frontend and front end find different jobs.
+- Where the job is (location): city, state, country or region.
+- Remote or onsite (workType): remote, hybrid or onsite; remote and hybrid as the company flagged them.
+- Posted in the last (postedWithin): 24 hours, 3 days, 7 days, 30 days, any time, or your own period.
+- Number of jobs (maxJobs): 100 by default, 0 for every match.
+- Full details (includeDetails): adds the description, pay with its currency and period, reference number, city, region, country and country code.
+- Leave out words (excludeTerms): drops jobs whose title has these words.
+- Job type (employmentType): full-time, part-time, contract or intern (Casual counts as part-time); temporary or seasonal finds nothing.
+- Match descriptions (searchDescriptions): finds your words in the description too.
+- Only these companies (companies): a name, the company ID in any capitals, or a SmartRecruiters link.
+- Job links to check (jobUrls): checks links, smrtr.io short links included, instead of searching.
+
+## Pricing
+
+PAY_PER_EVENT model, platform usage included, no start fee:
+
+- Job: $0.0025 per saved job ($2.50 per 1,000), and per checked link that is closed or not found
+- Job with details: $0.0035 per saved job with full details on ($3.50 per 1,000)
+
+SmartRecruiters Jobs Scraper's Apify Store header, "from $2.00 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE and BRONZE users (Apify's Free and Starter plans) pay the base prices above, $0.0025 a job and $0.0035 with details; SILVER (Scale) pays 10% less, $0.00225 and $0.00315; GOLD (Business) and above pay 20% less, $0.002 and $0.0028. There is no start fee, so the job price is the whole cost on every plan.
+
+Typical costs (Free and Starter price):
+
+- 100 newest jobs: $0.25
+- 100 jobs with full details: $0.35
+- Every job posted in one day (8,406 on 2026-11-03): $21.02
+
+Apify's free $5 monthly credit covers 2,000 jobs, or about 1,400 with full details.
+
+## Speed
+
+About 40 seconds at the default 2 GB for a search of every career site: 40.7 s for software engineer on Apify on 2026-11-03 (run T1JjpjZvjP6XS2NFm), against 112 s at 1 GB. Each keyword is its own pass over every site. Naming companies reads only those: Bosch Group took 5 requests.
+
+## How to call it
+
+- Apify API: POST https://api.apify.com/v2/acts/anshumanatrey~smartrecruiters-jobs-search/run-sync-get-dataset-items with the input as JSON and the header Authorization: Bearer <APIFY_TOKEN>. It returns the rows and waits up to 300 seconds, so start bigger runs (every job) with a client.
+- Python and JavaScript: the apify-client package, actor anshumanatrey/smartrecruiters-jobs-search.
+- n8n: the Apify node, Run an Actor and get dataset. Make: the Apify app's Run an Actor and Get Dataset Items modules.
+- MCP: https://mcp.apify.com?tools=anshumanatrey/smartrecruiters-jobs-search, signed in with Apify or with Authorization: Bearer <APIFY_TOKEN>.
+
+## When to use
+
+- The user wants jobs from companies that hire through SmartRecruiters, or a SmartRecruiters jobs API.
+- The user wants a daily feed of new jobs by title, country, region, remote work or job type across 2,900+ companies.
+- The user wants the jobs of one company on SmartRecruiters, such as Bosch, ServiceNow or LinkedIn.
+- The user wants to check whether SmartRecruiters job links are still open.
+
+## When NOT to use
+
+- The user needs pay on every row: SmartRecruiters' job list has none, and with full details 15% of a sample had it.
+- The user needs jobs from a company that is not on SmartRecruiters, or many platforms in one run: use the sibling actor for that platform (Sibling actors below) or a multi-ATS actor.
+- The user needs a job's closing date: SmartRecruiters' API gives none.
+
+## Sample input
+
+```json
+{
+  "searchTerms": ["software engineer"],
+  "location": ["Germany", "United States"],
+  "postedWithin": "30 days",
+  "maxJobs": 100
+}
+```
+
+## Sample output (one record)
+
+From run T1JjpjZvjP6XS2NFm on Apify (2026-11-03, build 1.0.1), searching every company for software engineer.
+
+```json
+{
+  "title": "Senior Staff Software Engineer, JavaScript Runtime & Compilers",
+  "company": "ServiceNow",
+  "location": "San Diego, California, United States",
+  "workType": "remote",
+  "employmentType": "full-time",
+  "department": "Engineering, Infrastructure and Operations",
+  "salary": null,
+  "postedAt": "2026-11-02T20:23:23.631Z",
+  "jobUrl": "https://jobs.smartrecruiters.com/ServiceNow/744000159234126-senior-staff-software-engineer-javascript-runtime-compilers",
+  "applyUrl": "https://jobs.smartrecruiters.com/ServiceNow/744000159234126-senior-staff-software-engineer-javascript-runtime-compilers?oga=true",
+  "status": "open",
+  "platform": "smartrecruiters",
+  "companySlug": "ServiceNow",
+  "jobId": "744000159234126",
+  "checkedAt": "2026-11-03T09:11:15+00:00"
+}
+```
+
+## Differentiators vs alternatives
+
+- vs fantastic-jobs/career-site-job-listing-api ($0.012 per job, $0.01 start): many more platforms from a stored database; this actor costs less per job and reads SmartRecruiters live.
+- vs jobo.world/smartrecruiters-jobs-scraper-api ($0.004 per job): searches its own index by keyword; this actor reads 2,917 career sites live and costs less per job.
+- vs memo23/smartrecruiters-scraper ($0.0009 per job, $0.025 start): cheaper per job, but it needs the company IDs; this actor needs no list.
+- vs bovi/greenhouse-lever-ashby-job-scraper ($0.0015 per job): cheaper per job for the companies you name; this actor searches every company on its list at once.
+
+## Sibling actors
+
+- Ashby Jobs Scraper (https://apify.com/anshumanatrey/ashby-jobs-search): Jobs from every company on Ashby (jobs.ashbyhq.com), searched live
+- Cornerstone Jobs Scraper (https://apify.com/anshumanatrey/cornerstone-jobs-search): Jobs from every company on Cornerstone (csod.com), searched live
+- Workday Jobs Scraper (https://apify.com/anshumanatrey/workday-job-search): Jobs from every company on Workday (myworkdayjobs.com), searched live
+- Deel Jobs Scraper (https://apify.com/anshumanatrey/deel-jobs-search): Jobs from every company on Deel ATS (jobs.deel.com), with pay
+- Greenhouse Jobs Scraper (https://apify.com/anshumanatrey/greenhouse-jobs-search): Jobs from every company on Greenhouse (boards.greenhouse.io), searched live
+- Workable Jobs Scraper (https://apify.com/anshumanatrey/workable-job-search): Jobs from every company on Workable, in one search
+- Lever Jobs Scraper (https://apify.com/anshumanatrey/lever-jobs-search): Jobs from 2,300+ companies on Lever (jobs.lever.co), searched live
+
+## Documentation
+
+- Apify Store: https://apify.com/anshumanatrey/smartrecruiters-jobs-search
+- GitHub repo: https://github.com/AnshumanAtrey/smartrecruiters-jobs-search
+- Issues / feedback: GitHub Issues on the above repo
+
+## Maintainer
+
+Anshuman Atrey (https://github.com/AnshumanAtrey), who publishes a portfolio of data and OSINT actors on Apify Store. Feature requests and bugs: LinkedIn (https://linkedin.com/in/anshumanatrey, fastest), GitHub issues, or atrey.dev.
